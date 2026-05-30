@@ -2,13 +2,6 @@
 
 Este repositorio contiene los modelos de Inteligencia Artificial encargados del procesamiento de datos biométricos y de movimiento para el ecosistema **HealthWatch**. Nuestro objetivo es transformar los datos crudos de los sensores en información accionable (detección de caídas, nivel de oxígeno y ritmo cardíaco).
 
-## 🚀 Estructura de la Organización
-Este proyecto es parte de un sistema integrado:
-*   **IoT:** Captura de datos con sensores físicos.
-*   **Backend:** Gestión de usuarios y almacenamiento.
-*   **App:** Visualización y alertas en tiempo real.
-*   **ML (Este repo):** Inteligencia y predicción.
-
 ---
 
 ## 📂 Estructura del Repositorio
