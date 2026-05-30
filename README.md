@@ -12,19 +12,19 @@ El proyecto se divide en dos módulos principales según el origen de los datos:
 **Sensor:** `MAX30100`
 *   **Objetivo:** Análisis de niveles de saturación de oxígeno en sangre (SpO2) y frecuencia cardíaca.
 *   **Modelos:** Algoritmos de filtrado y regresión para limpieza de ruido (ruido por movimiento o mala colocación).
-*   **Carpeta:** `/modulo-a-spo2`
+*   **Carpeta:** `/MODULO A`
 
 ### 📦 Módulo B: Activity Recognition & Fall Detection
 **Sensor:** `MPU6050` (Acelerómetro y Giroscopio)
 *   **Objetivo:** Detección de Caídas Libres e impactos, y Reconocimiento de Actividad Física (HAR).
 *   **Algoritmo:** Red Neuronal Recurrente (**LSTM**) implementada en **PyTorch**.
 *   **Funcionamiento:** Analiza ventanas temporales de datos (`acc`, `gyro`, `pitch`, `roll`, `yaw`) para identificar el patrón característico de una caída (pérdida de gravedad seguida de impacto y rotación caótica).
-*   **Carpeta:** `/modulo-b-acelerometro`
+*   **Carpeta:** `/MODULO B`
 
 ---
 
 ## 🛠️ Stack Tecnológico
-*   **Lenguaje:** Python 3.11+
+*   **Lenguaje:** Python 3.14+
 *   **Deep Learning:** PyTorch (LSTMs para series temporales)
 *   **Procesamiento de Datos:** Pandas, NumPy, Scikit-Learn
 *   **Versionamiento de Modelos:** Archivos `.pth` (PyTorch State Dict)
@@ -35,8 +35,7 @@ El proyecto se divide en dos módulos principales según el origen de los datos:
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/TuOrganizacion/HealthWatch-ML.git
-   cd HealthWatch-ML
+   git clone https://github.com/HealthWatch-Inc/HealthWatch-ML.git
    ```
 
 2. **Crear entorno virtual e instalar dependencias:**
