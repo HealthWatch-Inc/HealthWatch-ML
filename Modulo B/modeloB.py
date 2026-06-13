@@ -8,6 +8,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+import joblib
 
 # --- 1. CONFIGURACIÓN Y RUTAS ---
 DATA_PATH = "data/"
@@ -42,7 +43,7 @@ def prepare_data():
         sequences.append(window)
         labels.append(label)
 
-    return np.array(sequences), np.array(labels)
+    return np.array(sequences), np.array(labels), scaler
 
 
 # --- 3. DEFINICIÓN DE LA RED NEURONAL (LSTM) ---
@@ -64,7 +65,7 @@ class FallLSTM(nn.Module):
 
 # --- 4. ENTRENAMIENTO ---
 print("Preparando datos...")
-X, y = prepare_data()
+X, y, scaler = prepare_data()  
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Convertir a Tensores de PyTorch
@@ -98,6 +99,20 @@ for epoch in range(epochs):
 MODEL_SAVE_PATH = os.path.join(MODELS_DIR, "fall_model_pytorch.pth")
 torch.save(model.state_dict(), MODEL_SAVE_PATH)
 print(f"\nModelo guardado exitosamente en: {MODEL_SAVE_PATH}")
+
+joblib.dump(scaler, os.path.join(MODELS_DIR, 'scaler_fall.pkl'))
+print(f"Scaler guardado en: {os.path.join(MODELS_DIR, 'scaler_fall.pkl')}")
+
+config_fall = {
+    'window_size': WINDOW_SIZE,
+    'step_size': STEP_SIZE,
+    'features': FEATURES,
+    'input_size': len(FEATURES),
+    'hidden_size': 64,
+    'num_layers': 2
+}
+joblib.dump(config_fall, os.path.join(MODELS_DIR, 'config_fall.pkl'))
+print(f"Configuración guardada en: {os.path.join(MODELS_DIR, 'config_fall.pkl')}")
 
 # --- 6. EVALUACIÓN RÁPIDA ---
 model.eval()
